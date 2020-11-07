@@ -3,28 +3,32 @@
 
   <link name="base_link"/>
 
-  <!-- Your URDF code here -->
+  <!-- body link -->
   <link name="body_link">
     <visual> 
         <origin xyz= "0 0 0" rpy = "0 0 0" />
-            <geometry>
-                <mesh filename="package://description/urdf/meshes/cybertruck_body.dae" />
-            </geometry>
+        <geometry>
+              <mesh filename="package://description/urdf/meshes/cybertruck_body.dae" />
+        </geometry>
     </visual>
 
     <collision>
         <origin xyz= "0 0 0" rpy = "0 0 0" />
-            <geometry>
-                <mesh filename="package://description/urdf/meshes/cybertruck_body.dae" />
+        <geometry>
+            <mesh filename="package://description/urdf/meshes/cybertruck_body.dae" />
         </geometry>
     </collision>
 
   </link>
 
+  <!-- body joint -->
   <joint name="body_joint" type="fixed">
     <parent link="base_link"/>
     <child link="body_link"/>
     <origin xyz = "0 0 0 " rpy="0 0 ${pi / 2}"/> 
   </joint>
+
+  <!-- wheels -->
+  <xacro:include filename="$(find description)/urdf/wheels.urdf.xacro"/>
 
 </robot>
