@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <robot name="cybertruck" xmlns:xacro="http://ros.org/wiki/xacro">
 
+  <!-- Includes -->
+  <xacro:include filename="$(find description)/urdf/constants.xacro"/>
+  <xacro:include filename="$(find description)/urdf/inertias.xacro"/>
+
+
+
   <link name="base_link"/>
 
   <!-- body link -->
@@ -19,6 +25,10 @@
         </geometry>
     </collision>
 
+
+    <inertial>
+      <xacro:body_inertial m="${body_mass}" l="${body_length}" w="${body_width}" h="${body_height}" />
+    </inertial>
   </link>
 
   <!-- body joint -->
